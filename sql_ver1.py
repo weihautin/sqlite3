@@ -106,7 +106,7 @@ finally:
         con.close()
 '''
 
-
+'''
 # 插入多個變數內容進入Table方法
 con = lite.connect('test.db')
 a = u"我聽你你你你"
@@ -138,6 +138,43 @@ with con:
 
     lid = cur.lastrowid
     print "The last Id of the inserted row is %d" % lid
+'''
+
+'''
+# 利用 fetchone()來擷取tables內的資料
+con = lite.connect('test.db')
+
+with con:
+    
+    cur = con.cursor()    
+    cur.execute("SELECT * FROM Cars")
+
+    while True:
+      
+        row = cur.fetchone()
+        
+        if row == None:
+            break
+            
+        print row[0], row[1], row[2]
+'''
+
+'''
+#使用 dictionary字典來擷取tables
+con = lite.connect('test.db')    
+
+with con:
+    
+    con.row_factory = lite.Row
+       
+    cur = con.cursor() 
+    cur.execute("SELECT * FROM Cars")
+
+    rows = cur.fetchall()
+
+    for row in rows:
+        print "%s %s %s" % (row["Id"], row["Name"], row["Price"])
+'''
 
 
 

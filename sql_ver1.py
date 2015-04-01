@@ -7,7 +7,7 @@ import sys
 
 con = lite.connect('test.db')
 
-'''
+
 # 顯示sqlite的版本
 with con:
     
@@ -17,7 +17,7 @@ with con:
     data = cur.fetchone()
     
     print "SQLite version: %s" % data  
-'''
+
     
 """ # 印出cars內容    
 with con:    

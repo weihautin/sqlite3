@@ -107,16 +107,32 @@ finally:
 '''
 
 
-# 插入一個變數內容進入Table方法
+# 插入多個變數內容進入Table方法
 con = lite.connect('test.db')
 a = u"我聽你你你你"
-b= ' 999'
+b= 23
+NULL='NULL'
+
+a= 'we4dddd'
+b = 34414124
+
+#usr =('we4',123)
+usr =(a, b)
 
 with con:
     
     cur = con.cursor()    
-    #cur.execute("INSERT INTO qoo3(price) VALUES (?);",[b])
-    cur.execute("INSERT INTO qoo3(price) VALUES (?);",[b])
+    #    cur.execute("INSERT INTO qoo3(price) VALUES (?);",[b])
+#    cur.execute("INSERT INTO qoo3(price) VALUES (%d);"% (b) )  
+    #cur.execute("INSERT INTO qoo3(name,price) VALUES (%s,%d);"% (a,b) )  
+    
+    cur.execute("INSERT INTO qoo3(name, price) VALUES (?,?) ", usr )  
+    
+        #cur.execute("INSERT  INTO qoo3(price) VALUES (?);",[b])
+    
+    #cur.executemany("INSERT INTO qoo3(id,name,price) VALUES (NULL, ?, ?);",NULL,[a],[b])
+    
+    #cur.execute("INSERT INTO qoo3(id, name, price) VALUES (?,?,?);",[a],[b])
     #cur.execute("insert ignore into qoo3(id, name, price);",?[a],[b])
  
 

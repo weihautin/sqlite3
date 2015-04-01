@@ -8,7 +8,7 @@ import sys
 con = lite.connect('test.db')
 
 
-# 顯示sqlite的版本
+'''# 顯示sqlite的版本
 with con:
     
     cur = con.cursor()    
@@ -17,6 +17,8 @@ with con:
     data = cur.fetchone()
     
     print "SQLite version: %s" % data  
+'''
+
 
     
 """ # 印出cars內容    
@@ -104,21 +106,25 @@ finally:
         con.close()
 '''
 
-''' # 建立資料庫於暫存記憶體; 建立主鍵PRIMARY KEY; lastrowid 可查詢最後ID編號
-con = lite.connect(':memory:')
+
+# 插入一個變數內容進入Table方法
+con = lite.connect('test.db')
+a = u"我聽你你你你"
+b= ' 999'
 
 with con:
     
     cur = con.cursor()    
-    cur.execute("CREATE TABLE Friends(Id INTEGER PRIMARY KEY, Name TEXT);")
-    cur.execute("INSERT INTO Friends(Name) VALUES ('Tom');")
-    cur.execute("INSERT INTO Friends(Name) VALUES ('Rebecca');")
-    cur.execute("INSERT INTO Friends(Name) VALUES ('Jim');")
-    cur.execute("INSERT INTO Friends(Name) VALUES ('Robert');")
-        
+    #cur.execute("INSERT INTO qoo3(price) VALUES (?);",[b])
+    cur.execute("INSERT INTO qoo3(price) VALUES (?);",[b])
+    #cur.execute("insert ignore into qoo3(id, name, price);",?[a],[b])
+ 
+
     lid = cur.lastrowid
     print "The last Id of the inserted row is %d" % lid
-'''
+
+
+
     
     
 

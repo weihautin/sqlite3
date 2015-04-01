@@ -113,9 +113,6 @@ a = u"我聽你你你你"
 b= 23
 NULL='NULL'
 
-a= 'we4dddd'
-b = 34414124
-
 #usr =('we4',123)
 usr =(a, b)
 
@@ -138,6 +135,7 @@ with con:
 
     lid = cur.lastrowid
     print "The last Id of the inserted row is %d" % lid
+
 
 
 

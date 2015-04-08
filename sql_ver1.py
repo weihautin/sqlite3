@@ -176,6 +176,32 @@ with con:
 
 
 
+
+
+# 插入多個變數包含時間內容進入Table方法
+con = lite.connect('test.db')
+a = u"我聽你你你你"
+b = 9999
+
+with con:
+    #CREATE TABLE qoo3(Id INTEGER PRIMARY KEY, Time TEXT ,Name TEXT, Price REAL, Volume REAL);
+    
+    cur = con.cursor() 
+
+
+    
+    cur.execute("SELECT strftime('%Y-%m-%d %H:%M')") #自訂時間格式
+    c = cur.fetchone() 
+    c = str(c[0]) #轉換成字串 為了usr
+
+    usr = (c, a, b )
+
+    cur.execute("INSERT INTO qoo3(Time, Name, price) VALUES (?,?,?) ", usr )  
+
+    lid = cur.lastrowid
+    print "The last Id of the inserted row is %d" % lid
+
+
     
     
 

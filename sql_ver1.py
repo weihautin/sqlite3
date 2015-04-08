@@ -113,9 +113,6 @@ a = u"我聽你你你你"
 b= 23
 NULL='NULL'
 
-a= 'we4dddd'
-b = 34414124
-
 #usr =('we4',123)
 usr =(a, b)
 
@@ -175,6 +172,7 @@ with con:
     for row in rows:
         print "%s %s %s" % (row["Id"], row["Name"], row["Price"])
 '''
+
 
 
 

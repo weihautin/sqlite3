@@ -6,6 +6,8 @@ import sys
 
 
 con = lite.connect('test.db')
+import time
+
 
 
 '''# 顯示sqlite的版本
@@ -187,14 +189,24 @@ with con:
     #CREATE TABLE qoo3(Id INTEGER PRIMARY KEY, Time TEXT ,Name TEXT, Price REAL, Volume REAL);
     
     cur = con.cursor() 
+    
+    timenow = datetime.datetime.now()
+    
+    year = str(timenow.year)
+    month = str(timenow.month)
+    day = str(timenow.day)
+    hour = str(timenow.hour)
+    minute = str(timenow.minute)
 
+    now = year+'-'+month+'-'+day+' '+hour+':'+minute
 
     
-    cur.execute("SELECT strftime('%Y-%m-%d %H:%M')") #自訂時間格式
-    c = cur.fetchone() 
-    c = str(c[0]) #轉換成字串 為了usr
+#    cur.execute("SELECT strftime('%Y-%m-%d %H:%M','localtime')") #自訂時間格式
+    
+    
+   
 
-    usr = (c, a, b )
+    usr = (now, a, b)
 
     cur.execute("INSERT INTO qoo3(Time, Name, price) VALUES (?,?,?) ", usr )  
 
